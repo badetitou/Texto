@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Paramètres</string>
+    <string name="title_activity_conversation">Conversation</string>
+    <string name="lol">Travail en cours...</string>
+    <string name="compose_sms">Nouveaux sms</string>
+</resources>

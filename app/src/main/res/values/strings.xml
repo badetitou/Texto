@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">Texto</string>
+
+    <string name="title_activity_conversation">Conversation</string>
+    <string name="action_settings">Settings</string>
+    <string name="lol">Work in progress...</string>
+    <string name="compose_sms">New sms</string>
+</resources>
