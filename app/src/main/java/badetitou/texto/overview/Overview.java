@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,7 @@ import badetitou.texto.R;
 import badetitou.texto.conversation.Conversation;
 
 
-public class Overview extends ActionBarActivity {
+public class Overview extends AppCompatActivity {
 
     public static String THREAD_ID = "thread_id";
     public static String NAME = "name";
@@ -91,6 +92,7 @@ public class Overview extends ActionBarActivity {
         while (cursor.moveToNext()){
             al.add(new SMS(cursor.getInt(cursor.getColumnIndexOrThrow("thread_id")),
                     cursor.getString(cursor.getColumnIndexOrThrow("address")),
+                    cursor.getInt(cursor.getColumnIndexOrThrow("type")),
                     cursor.getString(cursor.getColumnIndexOrThrow("body")),
                     cursor.getLong(cursor.getColumnIndexOrThrow("date"))));
         }

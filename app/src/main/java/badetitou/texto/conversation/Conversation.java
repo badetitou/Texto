@@ -42,6 +42,7 @@ public class Conversation extends AppCompatActivity {
         while (cursor.moveToNext()) {
             SMSes.add(new SMS(cursor.getInt(cursor.getColumnIndexOrThrow("thread_id")),
                     cursor.getString(cursor.getColumnIndexOrThrow("address")),
+                    cursor.getInt(cursor.getColumnIndexOrThrow("type")),
                     cursor.getString(cursor.getColumnIndexOrThrow("body")),
                     cursor.getLong(cursor.getColumnIndexOrThrow("date"))));
         }
