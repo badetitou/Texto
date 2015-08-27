@@ -47,7 +47,11 @@ public class Overview extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), Conversation.class);
                 intent.putExtra(THREAD_ID, SMSes.get(position).getThreadId());
-                intent.putExtra(NAME, SMSes.get(position).getUser());
+                if (SMSes.get(position).getUser().compareTo("") == 0){
+                    intent.putExtra(NAME, SMSes.get(position).getPhoneNumber());
+                } else {
+                    intent.putExtra(NAME, SMSes.get(position).getUser());
+                }
                 intent.putExtra(PHONE_NUMBER, SMSes.get(position).getPhoneNumber());
                 startActivity(intent);
             }

@@ -1,6 +1,8 @@
 package badetitou.texto.Data;
 
 /**
+ * Texto
+ *
  * Created by Benoit on 23/08/2015.
  */
 public class SMS {
@@ -10,6 +12,11 @@ public class SMS {
     public static final String DATE = "date";
     public static final String READ = "read";
     public static final String STATUS = "status";
+    public static final int STATUS_NONE = -1;
+    public static final int STATUS_COMPLETE = 0;
+    public static final int STATUS_PENDING = 32;
+    public static final int STATUS_FAILED = 64;
+
     public static final String TYPE = "type";
     public static final String BODY = "body";
     public static final String SEEN = "seen";

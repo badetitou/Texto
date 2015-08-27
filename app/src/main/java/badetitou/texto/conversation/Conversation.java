@@ -1,23 +1,23 @@
 package badetitou.texto.conversation;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import badetitou.texto.Data.SMS;
 import badetitou.texto.R;
 import badetitou.texto.overview.Overview;
-import badetitou.texto.Data.SMS;
 
 public class Conversation extends AppCompatActivity {
 
@@ -70,8 +70,20 @@ public class Conversation extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onSendSms(View view){
+    public void onSendSms(View view) {
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phoneNumber, null, ((EditText) findViewById(R.id.editText)).getText().toString(), null, null);
+
+        ContentValues values = new ContentValues();
+        values.put(SMS.ADDRESS, phoneNumber);
+        values.put(SMS.DATE, System.currentTimeMillis());
+        values.put(SMS.READ, SMS.MESSAGE_IS_NOT_READ);
+        values.put(SMS.STATUS, SMS.STATUS);
+        values.put(SMS.TYPE, SMS.MESSAGE_TYPE_SENT);
+        values.put(SMS.SEEN, SMS.MESSAGE_IS_NOT_SEEN);
+        values.put(SMS.BODY, ((EditText) findViewById(R.id.editText)).getText().toString());
+        getContentResolver().insert(Uri.parse(SMS.SMS_URI), values);
+
+        ((EditText) findViewById(R.id.editText)).setText("");
     }
 }
