@@ -16,7 +16,8 @@
         android:layout_above="@+id/editText"
         android:stackFromBottom="true"
         android:transcriptMode="normal"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:divider="@null"/>
 
     <EditText
         android:layout_width="wrap_content"
