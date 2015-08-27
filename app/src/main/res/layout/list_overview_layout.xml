@@ -14,7 +14,8 @@
         android:textStyle="bold"
         android:layout_above="@+id/body"
         android:layout_alignParentTop="true"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:textColor="@color/abc_primary_text_material_light" />
 
     <TextView
         android:layout_width="wrap_content"
