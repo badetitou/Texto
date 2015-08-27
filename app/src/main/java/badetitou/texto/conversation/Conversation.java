@@ -73,6 +73,5 @@ public class Conversation extends AppCompatActivity {
     public void onSendSms(View view){
         SmsManager smsManager = SmsManager.getDefault();
         smsManager.sendTextMessage(phoneNumber, null, ((EditText) findViewById(R.id.editText)).getText().toString(), null, null);
-        Toast.makeText(this, "Send : " + phoneNumber,Toast.LENGTH_SHORT).show();
     }
 }
