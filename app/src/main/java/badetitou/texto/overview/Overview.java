@@ -3,9 +3,8 @@ package badetitou.texto.overview;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.provider.ContactsContract;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +18,7 @@ import java.util.List;
 
 import badetitou.texto.Data.SMS;
 import badetitou.texto.R;
+import badetitou.texto.contacts.Contacts;
 import badetitou.texto.conversation.Conversation;
 
 
@@ -47,7 +47,7 @@ public class Overview extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), Conversation.class);
                 intent.putExtra(THREAD_ID, SMSes.get(position).getThreadId());
-                if (SMSes.get(position).getUser().compareTo("") == 0){
+                if (SMSes.get(position).getUser().compareTo("") == 0) {
                     intent.putExtra(NAME, SMSes.get(position).getPhoneNumber());
                 } else {
                     intent.putExtra(NAME, SMSes.get(position).getUser());
@@ -73,6 +73,7 @@ public class Overview extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -92,7 +93,7 @@ public class Overview extends AppCompatActivity {
         ArrayList<SMS> al = new ArrayList<>();
 
         Uri smsUri = Uri.parse("content://sms/");
-        Cursor cursor = getContentResolver().query(smsUri,null,null,null,"date DESC");
+        Cursor cursor = getContentResolver().query(smsUri, null, null, null, "date DESC");
         while (cursor.moveToNext()){
             al.add(new SMS(cursor.getInt(cursor.getColumnIndexOrThrow("thread_id")),
                     cursor.getString(cursor.getColumnIndexOrThrow("address")),
@@ -115,5 +116,10 @@ public class Overview extends AppCompatActivity {
                 al.get(i).setUser(phone.getString(0));
         }
         return al;
+    }
+
+    public void onCreateConversation(View view) {
+        Intent intent = new Intent(getApplicationContext(), Contacts.class);
+        startActivity(intent);
     }
 }
