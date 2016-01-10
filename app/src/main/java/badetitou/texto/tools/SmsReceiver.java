@@ -77,7 +77,7 @@ public class SmsReceiver extends BroadcastReceiver {
     private void notification(Context context){
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.texto)
+                        .setSmallIcon(R.mipmap.ic_launcher)
                         .setContentTitle(msg_from)
                         .setContentText(msgBody);
         Intent resultIntent = new Intent(context, Overview.class);
